@@ -17,16 +17,19 @@
   let time = 0;
   let orbiters = [];
   let bursts = [];
+  let animId = null;
+  const DPR = Math.min(window.devicePixelRatio || 1, 3); // cap at 3x for perf
 
   function resize() {
     const wrap = canvas.parentElement;
     W = wrap.offsetWidth;
     H = wrap.offsetHeight;
-    canvas.width = W * 2;   // retina
-    canvas.height = H * 2;
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
     canvas.style.width = W + 'px';
     canvas.style.height = H + 'px';
-    ctx.scale(2, 2);
+    // Reset transform before scaling — WebKit accumulates ctx.scale on resize
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     cx = W / 2;
     cy = H / 2;
   }
@@ -210,8 +213,17 @@
       if (!alive) bursts.splice(b, 1);
     }
 
-    requestAnimationFrame(draw);
+    animId = requestAnimationFrame(draw);
   }
+
+  // Pause/resume on visibility change — iOS Safari throttles rAF when backgrounded
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (animId) { cancelAnimationFrame(animId); animId = null; }
+    } else {
+      if (!animId) { animId = requestAnimationFrame(draw); }
+    }
+  });
 
   window.addEventListener('resize', resize);
   init();

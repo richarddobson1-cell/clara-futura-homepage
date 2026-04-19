@@ -15,7 +15,10 @@
   let scrollY = 0;
   let lastScrollY = 0;
   let scrollSpeed = 0;
+  let animId = null;
   const PARTICLE_COUNT = 300;
+  // iOS Safari canvas limit: ~16M pixels (4096x4096). Cap to stay safe at high DPR.
+  const MAX_CANVAS_DIM = 4096;
 
   // Bright, vivid colours
   const AMBER = '#F5C870';
@@ -49,8 +52,19 @@
   }
 
   function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    // Cap canvas size for iOS Safari (max ~4096px per dimension at device pixels)
+    width = w;
+    height = h;
+    canvas.width = Math.min(w * dpr, MAX_CANVAS_DIM);
+    canvas.height = Math.min(h * dpr, MAX_CANVAS_DIM);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    const scaleX = canvas.width / w;
+    const scaleY = canvas.height / h;
+    ctx.setTransform(scaleX, 0, 0, scaleY, 0, 0);
   }
 
   function createParticle(x, y) {
@@ -219,8 +233,9 @@
       ctx.fillStyle = p.color;
       ctx.globalAlpha = 0.65 + pulse * 0.35;
       ctx.fill();
-      ctx.globalAlpha = 1;
     });
+    // Reset alpha after particle loop — prevents WebKit alpha state leak
+    ctx.globalAlpha = 1;
 
     // --- Draw connection lines (nearby particles) ---
     for (let i = 0; i < particles.length; i++) {
@@ -285,11 +300,21 @@
       ctx.fillStyle = p.color;
       ctx.globalAlpha = (0.8 + 0.2 * Math.sin(p.phase * 5)) * lifeRatio;
       ctx.fill();
-      ctx.globalAlpha = 1;
     }
+    // Reset alpha after explosion loop
+    ctx.globalAlpha = 1;
 
-    requestAnimationFrame(draw);
+    animId = requestAnimationFrame(draw);
   }
+
+  // Pause/resume on visibility change — iOS Safari throttles rAF when backgrounded
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (animId) { cancelAnimationFrame(animId); animId = null; }
+    } else {
+      if (!animId) { animId = requestAnimationFrame(draw); }
+    }
+  });
 
   window.addEventListener('resize', resize);
 
