@@ -330,7 +330,7 @@ body.iframe-mode .nav {
   font-size: 2.5rem;
   font-weight: 300;
   color: var(--amber);
-  opacity: 0.2;
+  opacity: 0.7;
   line-height: 1;
   margin-bottom: 1rem;
 }
