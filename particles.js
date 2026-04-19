@@ -100,6 +100,8 @@
 
   // --- Scroll-triggered light explosions ---
   const explodedSections = new Set();
+  let heroExplosionTimer = 0;
+  const HERO_BURST_INTERVAL = 120; // ~2 seconds at 60fps
 
   function checkScrollExplosions() {
     const sections = document.querySelectorAll('.section, .hero');
@@ -124,6 +126,24 @@
         width * (0.2 + Math.random() * 0.6),
         height * 0.5
       );
+    }
+
+    // Periodic hero-area light bursts (particles exploding near portrait)
+    heroExplosionTimer++;
+    if (heroExplosionTimer >= HERO_BURST_INTERVAL) {
+      heroExplosionTimer = 0;
+      const heroEl = document.querySelector('.hero-portrait-wrap');
+      if (heroEl) {
+        const rect = heroEl.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < height) {
+          // Burst from edge of portrait area
+          const angle = Math.random() * Math.PI * 2;
+          const radius = 140 + Math.random() * 60;
+          const bx = rect.left + rect.width / 2 + Math.cos(angle) * radius;
+          const by = rect.top + rect.height / 2 + Math.sin(angle) * radius;
+          triggerExplosion(bx, by);
+        }
+      }
     }
   }
 
