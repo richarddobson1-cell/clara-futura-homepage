@@ -52,9 +52,31 @@ try {
   <!-- Animated frequency waves behind hero content -->
   <div class="hero-waves">
     <svg viewBox="0 0 1440 400" preserveAspectRatio="none" class="wave-svg">
-      <path class="wave wave-1" d="M0,200 Q180,100 360,200 Q540,300 720,200 Q900,100 1080,200 Q1260,300 1440,200" fill="none" stroke="rgba(242,181,77,0.25)" stroke-width="1.5"/>
-      <path class="wave wave-2" d="M0,200 Q180,120 360,200 Q540,280 720,200 Q900,120 1080,200 Q1260,280 1440,200" fill="none" stroke="rgba(164,174,183,0.18)" stroke-width="1"/>
-      <path class="wave wave-3" d="M0,200 Q180,140 360,200 Q540,260 720,200 Q900,140 1080,200 Q1260,260 1440,200" fill="none" stroke="rgba(232,229,221,0.1)" stroke-width="0.75"/>
+      <!-- Primary amber wave — wide amplitude -->
+      <path class="wave wave-1" d="M0,200 Q180,80 360,200 Q540,320 720,200 Q900,80 1080,200 Q1260,320 1440,200" fill="none" stroke="rgba(242,181,77,0.35)" stroke-width="1.8"/>
+      <!-- Secondary silver wave -->
+      <path class="wave wave-2" d="M0,200 Q180,110 360,200 Q540,290 720,200 Q900,110 1080,200 Q1260,290 1440,200" fill="none" stroke="rgba(200,208,216,0.25)" stroke-width="1.2"/>
+      <!-- Third amber harmonic — higher frequency -->
+      <path class="wave wave-3" d="M0,200 Q120,140 240,200 Q360,260 480,200 Q600,140 720,200 Q840,260 960,200 Q1080,140 1200,200 Q1320,260 1440,200" fill="none" stroke="rgba(242,181,77,0.2)" stroke-width="1"/>
+      <!-- Fourth silver harmonic — subtle -->
+      <path class="wave wave-4" d="M0,200 Q90,160 180,200 Q270,240 360,200 Q450,160 540,200 Q630,240 720,200 Q810,160 900,200 Q990,240 1080,200 Q1170,160 1260,200 Q1350,240 1440,200" fill="none" stroke="rgba(200,208,216,0.15)" stroke-width="0.75"/>
+      <!-- Fifth ultra-fast ripple -->
+      <path class="wave wave-5" d="M0,200 Q60,180 120,200 Q180,220 240,200 Q300,180 360,200 Q420,220 480,200 Q540,180 600,200 Q660,220 720,200 Q780,180 840,200 Q900,220 960,200 Q1020,180 1080,200 Q1140,220 1200,200 Q1260,180 1320,200 Q1380,220 1440,200" fill="none" stroke="rgba(255,208,116,0.12)" stroke-width="0.5"/>
+      <!-- Sixth cream ghost wave -->
+      <path class="wave wave-6" d="M0,180 Q360,250 720,170 Q1080,240 1440,190" fill="none" stroke="rgba(232,229,221,0.08)" stroke-width="2"/>
+      <!-- Bright travelling dots on hero waves -->
+      <circle r="4" fill="#DDE2E7" opacity="0.9">
+        <animateMotion dur="5s" repeatCount="indefinite" path="M0,200 Q180,80 360,200 Q540,320 720,200 Q900,80 1080,200 Q1260,320 1440,200"/>
+      </circle>
+      <circle r="3" fill="#F5C870" opacity="0.9">
+        <animateMotion dur="6s" repeatCount="indefinite" path="M0,200 Q180,110 360,200 Q540,290 720,200 Q900,110 1080,200 Q1260,290 1440,200" begin="1.5s"/>
+      </circle>
+      <circle r="3.5" fill="#FFFFFF" opacity="0.6">
+        <animateMotion dur="3.5s" repeatCount="indefinite" path="M0,200 Q120,140 240,200 Q360,260 480,200 Q600,140 720,200 Q840,260 960,200 Q1080,140 1200,200 Q1320,260 1440,200" begin="0.5s"/>
+      </circle>
+      <circle r="2.5" fill="#F2B54D" opacity="0.8">
+        <animateMotion dur="4s" repeatCount="indefinite" path="M0,200 Q90,160 180,200 Q270,240 360,200 Q450,160 540,200 Q630,240 720,200 Q810,160 900,200 Q990,240 1080,200 Q1170,160 1260,200 Q1350,240 1440,200" begin="2s"/>
+      </circle>
     </svg>
   </div>
 
@@ -136,46 +158,60 @@ try {
 </section>
 
 <!-- Frequency Wave Divider -->
-<div class="wave-divider">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <!-- Primary amber wave -->
-    <path d="M0,60 Q360,0 720,60 Q1080,120 1440,60" fill="none" stroke="rgba(242,181,77,0.5)" stroke-width="1.5">
-      <animate attributeName="d" dur="6s" repeatCount="indefinite" values="M0,60 Q360,0 720,60 Q1080,120 1440,60;M0,60 Q360,120 720,60 Q1080,0 1440,60;M0,60 Q360,0 720,60 Q1080,120 1440,60"/>
+<div class="wave-divider wave-divider-tall">
+  <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+    <!-- Primary amber wave — bold -->
+    <path d="M0,100 Q360,20 720,100 Q1080,180 1440,100" fill="none" stroke="rgba(242,181,77,0.55)" stroke-width="2">
+      <animate attributeName="d" dur="6s" repeatCount="indefinite" values="M0,100 Q360,20 720,100 Q1080,180 1440,100;M0,100 Q360,180 720,100 Q1080,20 1440,100;M0,100 Q360,20 720,100 Q1080,180 1440,100"/>
     </path>
     <!-- Secondary silver wave -->
-    <path d="M0,60 Q360,30 720,60 Q1080,90 1440,60" fill="none" stroke="rgba(200,208,216,0.35)" stroke-width="1">
-      <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0,60 Q360,30 720,60 Q1080,90 1440,60;M0,60 Q360,90 720,60 Q1080,30 1440,60;M0,60 Q360,30 720,60 Q1080,90 1440,60"/>
+    <path d="M0,100 Q360,50 720,100 Q1080,150 1440,100" fill="none" stroke="rgba(200,208,216,0.4)" stroke-width="1.5">
+      <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0,100 Q360,50 720,100 Q1080,150 1440,100;M0,100 Q360,150 720,100 Q1080,50 1440,100;M0,100 Q360,50 720,100 Q1080,150 1440,100"/>
     </path>
     <!-- Third amber harmonic -->
-    <path d="M0,55 Q240,25 480,65 Q720,95 960,50 Q1200,30 1440,60" fill="none" stroke="rgba(242,181,77,0.25)" stroke-width="0.75">
-      <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M0,55 Q240,25 480,65 Q720,95 960,50 Q1200,30 1440,60;M0,65 Q240,95 480,55 Q720,25 960,70 Q1200,90 1440,60;M0,55 Q240,25 480,65 Q720,95 960,50 Q1200,30 1440,60"/>
+    <path d="M0,95 Q240,45 480,110 Q720,155 960,85 Q1200,50 1440,100" fill="none" stroke="rgba(242,181,77,0.3)" stroke-width="1">
+      <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M0,95 Q240,45 480,110 Q720,155 960,85 Q1200,50 1440,100;M0,110 Q240,155 480,90 Q720,45 960,115 Q1200,150 1440,100;M0,95 Q240,45 480,110 Q720,155 960,85 Q1200,50 1440,100"/>
     </path>
     <!-- Fourth silver harmonic -->
-    <path d="M0,65 Q180,40 360,70 Q540,90 720,55 Q900,35 1080,65 Q1260,85 1440,55" fill="none" stroke="rgba(200,208,216,0.2)" stroke-width="0.75">
-      <animate attributeName="d" dur="9s" repeatCount="indefinite" values="M0,65 Q180,40 360,70 Q540,90 720,55 Q900,35 1080,65 Q1260,85 1440,55;M0,55 Q180,80 360,50 Q540,30 720,65 Q900,85 1080,55 Q1260,35 1440,65;M0,65 Q180,40 360,70 Q540,90 720,55 Q900,35 1080,65 Q1260,85 1440,55"/>
+    <path d="M0,105 Q180,70 360,115 Q540,145 720,95 Q900,60 1080,105 Q1260,140 1440,90" fill="none" stroke="rgba(200,208,216,0.25)" stroke-width="0.75">
+      <animate attributeName="d" dur="9s" repeatCount="indefinite" values="M0,105 Q180,70 360,115 Q540,145 720,95 Q900,60 1080,105 Q1260,140 1440,90;M0,90 Q180,130 360,85 Q540,55 720,105 Q900,140 1080,90 Q1260,60 1440,110;M0,105 Q180,70 360,115 Q540,145 720,95 Q900,60 1080,105 Q1260,140 1440,90"/>
     </path>
-    <!-- Fifth faint fast ripple -->
-    <path d="M0,60 Q120,45 240,60 Q360,75 480,60 Q600,45 720,60 Q840,75 960,60 Q1080,45 1200,60 Q1320,75 1440,60" fill="none" stroke="rgba(242,181,77,0.15)" stroke-width="0.5">
-      <animate attributeName="d" dur="4s" repeatCount="indefinite" values="M0,60 Q120,45 240,60 Q360,75 480,60 Q600,45 720,60 Q840,75 960,60 Q1080,45 1200,60 Q1320,75 1440,60;M0,60 Q120,75 240,60 Q360,45 480,60 Q600,75 720,60 Q840,45 960,60 Q1080,75 1200,60 Q1320,45 1440,60;M0,60 Q120,45 240,60 Q360,75 480,60 Q600,45 720,60 Q840,75 960,60 Q1080,45 1200,60 Q1320,75 1440,60"/>
+    <!-- Fifth higher frequency amber -->
+    <path d="M0,100 Q120,75 240,100 Q360,125 480,100 Q600,75 720,100 Q840,125 960,100 Q1080,75 1200,100 Q1320,125 1440,100" fill="none" stroke="rgba(242,181,77,0.18)" stroke-width="0.6">
+      <animate attributeName="d" dur="4s" repeatCount="indefinite" values="M0,100 Q120,75 240,100 Q360,125 480,100 Q600,75 720,100 Q840,125 960,100 Q1080,75 1200,100 Q1320,125 1440,100;M0,100 Q120,125 240,100 Q360,75 480,100 Q600,125 720,100 Q840,75 960,100 Q1080,125 1200,100 Q1320,75 1440,100;M0,100 Q120,75 240,100 Q360,125 480,100 Q600,75 720,100 Q840,125 960,100 Q1080,75 1200,100 Q1320,125 1440,100"/>
     </path>
-    <!-- Travelling particles — silver on amber, amber on silver -->
-    <circle r="5" fill="#DDE2E7" opacity="1">
-      <animateMotion dur="3.5s" repeatCount="indefinite" path="M0,60 Q360,0 720,60 Q1080,120 1440,60"/>
+    <!-- Sixth ultra-fast silver ripple -->
+    <path d="M0,100 Q72,88 144,100 Q216,112 288,100 Q360,88 432,100 Q504,112 576,100 Q648,88 720,100 Q792,112 864,100 Q936,88 1008,100 Q1080,112 1152,100 Q1224,88 1296,100 Q1368,112 1440,100" fill="none" stroke="rgba(200,208,216,0.1)" stroke-width="0.4">
+      <animate attributeName="d" dur="2.5s" repeatCount="indefinite" values="M0,100 Q72,88 144,100 Q216,112 288,100 Q360,88 432,100 Q504,112 576,100 Q648,88 720,100 Q792,112 864,100 Q936,88 1008,100 Q1080,112 1152,100 Q1224,88 1296,100 Q1368,112 1440,100;M0,100 Q72,112 144,100 Q216,88 288,100 Q360,112 432,100 Q504,88 576,100 Q648,112 720,100 Q792,88 864,100 Q936,112 1008,100 Q1080,88 1152,100 Q1224,112 1296,100 Q1368,88 1440,100;M0,100 Q72,88 144,100 Q216,112 288,100 Q360,88 432,100 Q504,112 576,100 Q648,88 720,100 Q792,112 864,100 Q936,88 1008,100 Q1080,112 1152,100 Q1224,88 1296,100 Q1368,112 1440,100"/>
+    </path>
+    <!-- Seventh ghost wave — wide slow -->
+    <path d="M0,80 Q480,140 960,80 Q1200,60 1440,110" fill="none" stroke="rgba(232,229,221,0.07)" stroke-width="2.5">
+      <animate attributeName="d" dur="14s" repeatCount="indefinite" values="M0,80 Q480,140 960,80 Q1200,60 1440,110;M0,120 Q480,60 960,120 Q1200,140 1440,90;M0,80 Q480,140 960,80 Q1200,60 1440,110"/>
+    </path>
+    <!-- Travelling particles — 8 total -->
+    <circle r="6" fill="#DDE2E7" opacity="1">
+      <animateMotion dur="3.5s" repeatCount="indefinite" path="M0,100 Q360,20 720,100 Q1080,180 1440,100"/>
+    </circle>
+    <circle r="5" fill="#FFFFFF" opacity="0.8">
+      <animateMotion dur="4.5s" repeatCount="indefinite" path="M0,100 Q360,20 720,100 Q1080,180 1440,100" begin="1.2s"/>
     </circle>
     <circle r="4" fill="#C8D0D8" opacity="1">
-      <animateMotion dur="5s" repeatCount="indefinite" path="M0,60 Q360,0 720,60 Q1080,120 1440,60" begin="1.5s"/>
+      <animateMotion dur="5s" repeatCount="indefinite" path="M0,100 Q360,50 720,100 Q1080,150 1440,100" begin="2s"/>
     </circle>
-    <circle r="4.5" fill="#F5C870" opacity="1">
-      <animateMotion dur="4s" repeatCount="indefinite" path="M0,60 Q360,120 720,60 Q1080,0 1440,60"/>
+    <circle r="5.5" fill="#F5C870" opacity="1">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M0,100 Q360,180 720,100 Q1080,20 1440,100"/>
     </circle>
-    <circle r="3.5" fill="#F2B54D" opacity="1">
-      <animateMotion dur="6s" repeatCount="indefinite" path="M0,60 Q360,120 720,60 Q1080,0 1440,60" begin="2s"/>
+    <circle r="4.5" fill="#F2B54D" opacity="1">
+      <animateMotion dur="6s" repeatCount="indefinite" path="M0,100 Q360,180 720,100 Q1080,20 1440,100" begin="2.5s"/>
+    </circle>
+    <circle r="3.5" fill="#FFD074" opacity="0.9">
+      <animateMotion dur="3s" repeatCount="indefinite" path="M0,95 Q240,45 480,110 Q720,155 960,85 Q1200,50 1440,100" begin="1s"/>
     </circle>
     <circle r="3" fill="#DDE2E7" opacity="0.9">
-      <animateMotion dur="7s" repeatCount="indefinite" path="M0,55 Q240,25 480,65 Q720,95 960,50 Q1200,30 1440,60" begin="1s"/>
+      <animateMotion dur="7s" repeatCount="indefinite" path="M0,105 Q180,70 360,115 Q540,145 720,95 Q900,60 1080,105 Q1260,140 1440,90" begin="0.5s"/>
     </circle>
-    <circle r="3" fill="#F5C870" opacity="0.9">
-      <animateMotion dur="5.5s" repeatCount="indefinite" path="M0,65 Q180,40 360,70 Q540,90 720,55 Q900,35 1080,65 Q1260,85 1440,55" begin="0.5s"/>
+    <circle r="4" fill="#FFFFFF" opacity="0.6">
+      <animateMotion dur="5.5s" repeatCount="indefinite" path="M0,100 Q120,75 240,100 Q360,125 480,100 Q600,75 720,100 Q840,125 960,100 Q1080,75 1200,100 Q1320,125 1440,100" begin="3s"/>
     </circle>
   </svg>
 </div>
@@ -217,40 +253,61 @@ try {
   </div>
 </section>
 
-<!-- Ecosystem Wave Divider -->
-<div class="wave-divider wave-divider-dark">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <!-- Primary amber wave -->
-    <path d="M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60" fill="none" stroke="rgba(242,181,77,0.45)" stroke-width="1.5">
-      <animate attributeName="d" dur="7s" repeatCount="indefinite" values="M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60;M0,60 Q240,100 480,60 Q720,20 960,60 Q1200,100 1440,60;M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60"/>
+<!-- Ecosystem Wave Divider (Enhanced — matching first divider) -->
+<div class="wave-divider wave-divider-dark wave-divider-tall">
+  <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+    <!-- Primary amber wave — bold -->
+    <path d="M0,100 Q360,20 720,100 Q1080,180 1440,100" fill="none" stroke="rgba(242,181,77,0.55)" stroke-width="2">
+      <animate attributeName="d" dur="7s" repeatCount="indefinite" values="M0,100 Q360,20 720,100 Q1080,180 1440,100;M0,100 Q360,180 720,100 Q1080,20 1440,100;M0,100 Q360,20 720,100 Q1080,180 1440,100"/>
     </path>
     <!-- Secondary silver wave -->
-    <path d="M0,55 Q300,85 600,50 Q900,25 1200,65 Q1350,80 1440,55" fill="none" stroke="rgba(200,208,216,0.3)" stroke-width="1">
-      <animate attributeName="d" dur="9s" repeatCount="indefinite" values="M0,55 Q300,85 600,50 Q900,25 1200,65 Q1350,80 1440,55;M0,65 Q300,35 600,70 Q900,95 1200,55 Q1350,40 1440,65;M0,55 Q300,85 600,50 Q900,25 1200,65 Q1350,80 1440,55"/>
+    <path d="M0,100 Q360,50 720,100 Q1080,150 1440,100" fill="none" stroke="rgba(200,208,216,0.4)" stroke-width="1.5">
+      <animate attributeName="d" dur="9s" repeatCount="indefinite" values="M0,100 Q360,50 720,100 Q1080,150 1440,100;M0,100 Q360,150 720,100 Q1080,50 1440,100;M0,100 Q360,50 720,100 Q1080,150 1440,100"/>
     </path>
     <!-- Third amber harmonic -->
-    <path d="M0,58 Q180,38 360,62 Q540,82 720,58 Q900,38 1080,62 Q1260,82 1440,58" fill="none" stroke="rgba(242,181,77,0.2)" stroke-width="0.75">
-      <animate attributeName="d" dur="5s" repeatCount="indefinite" values="M0,58 Q180,38 360,62 Q540,82 720,58 Q900,38 1080,62 Q1260,82 1440,58;M0,62 Q180,82 360,58 Q540,38 720,62 Q900,82 1080,58 Q1260,38 1440,62;M0,58 Q180,38 360,62 Q540,82 720,58 Q900,38 1080,62 Q1260,82 1440,58"/>
+    <path d="M0,95 Q240,45 480,110 Q720,155 960,85 Q1200,50 1440,100" fill="none" stroke="rgba(242,181,77,0.3)" stroke-width="1">
+      <animate attributeName="d" dur="11s" repeatCount="indefinite" values="M0,95 Q240,45 480,110 Q720,155 960,85 Q1200,50 1440,100;M0,110 Q240,155 480,90 Q720,45 960,115 Q1200,150 1440,100;M0,95 Q240,45 480,110 Q720,155 960,85 Q1200,50 1440,100"/>
     </path>
-    <!-- Fourth faint fast ripple -->
-    <path d="M0,60 Q90,50 180,60 Q270,70 360,60 Q450,50 540,60 Q630,70 720,60 Q810,50 900,60 Q990,70 1080,60 Q1170,50 1260,60 Q1350,70 1440,60" fill="none" stroke="rgba(200,208,216,0.12)" stroke-width="0.5">
-      <animate attributeName="d" dur="3s" repeatCount="indefinite" values="M0,60 Q90,50 180,60 Q270,70 360,60 Q450,50 540,60 Q630,70 720,60 Q810,50 900,60 Q990,70 1080,60 Q1170,50 1260,60 Q1350,70 1440,60;M0,60 Q90,70 180,60 Q270,50 360,60 Q450,70 540,60 Q630,50 720,60 Q810,70 900,60 Q990,50 1080,60 Q1170,70 1260,60 Q1350,50 1440,60;M0,60 Q90,50 180,60 Q270,70 360,60 Q450,50 540,60 Q630,70 720,60 Q810,50 900,60 Q990,70 1080,60 Q1170,50 1260,60 Q1350,70 1440,60"/>
+    <!-- Fourth silver harmonic -->
+    <path d="M0,105 Q180,70 360,115 Q540,145 720,95 Q900,60 1080,105 Q1260,140 1440,90" fill="none" stroke="rgba(200,208,216,0.25)" stroke-width="0.75">
+      <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0,105 Q180,70 360,115 Q540,145 720,95 Q900,60 1080,105 Q1260,140 1440,90;M0,90 Q180,130 360,85 Q540,55 720,105 Q900,140 1080,90 Q1260,60 1440,110;M0,105 Q180,70 360,115 Q540,145 720,95 Q900,60 1080,105 Q1260,140 1440,90"/>
     </path>
-    <!-- Travelling particles -->
-    <circle r="5" fill="#DDE2E7" opacity="1">
-      <animateMotion dur="4s" repeatCount="indefinite" path="M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60"/>
+    <!-- Fifth higher frequency amber -->
+    <path d="M0,100 Q120,75 240,100 Q360,125 480,100 Q600,75 720,100 Q840,125 960,100 Q1080,75 1200,100 Q1320,125 1440,100" fill="none" stroke="rgba(242,181,77,0.18)" stroke-width="0.6">
+      <animate attributeName="d" dur="4s" repeatCount="indefinite" values="M0,100 Q120,75 240,100 Q360,125 480,100 Q600,75 720,100 Q840,125 960,100 Q1080,75 1200,100 Q1320,125 1440,100;M0,100 Q120,125 240,100 Q360,75 480,100 Q600,125 720,100 Q840,75 960,100 Q1080,125 1200,100 Q1320,75 1440,100;M0,100 Q120,75 240,100 Q360,125 480,100 Q600,75 720,100 Q840,125 960,100 Q1080,75 1200,100 Q1320,125 1440,100"/>
+    </path>
+    <!-- Sixth ultra-fast silver ripple -->
+    <path d="M0,100 Q72,88 144,100 Q216,112 288,100 Q360,88 432,100 Q504,112 576,100 Q648,88 720,100 Q792,112 864,100 Q936,88 1008,100 Q1080,112 1152,100 Q1224,88 1296,100 Q1368,112 1440,100" fill="none" stroke="rgba(200,208,216,0.1)" stroke-width="0.4">
+      <animate attributeName="d" dur="2.5s" repeatCount="indefinite" values="M0,100 Q72,88 144,100 Q216,112 288,100 Q360,88 432,100 Q504,112 576,100 Q648,88 720,100 Q792,112 864,100 Q936,88 1008,100 Q1080,112 1152,100 Q1224,88 1296,100 Q1368,112 1440,100;M0,100 Q72,112 144,100 Q216,88 288,100 Q360,112 432,100 Q504,88 576,100 Q648,112 720,100 Q792,88 864,100 Q936,112 1008,100 Q1080,88 1152,100 Q1224,112 1296,100 Q1368,88 1440,100;M0,100 Q72,88 144,100 Q216,112 288,100 Q360,88 432,100 Q504,112 576,100 Q648,88 720,100 Q792,112 864,100 Q936,88 1008,100 Q1080,112 1152,100 Q1224,88 1296,100 Q1368,112 1440,100"/>
+    </path>
+    <!-- Seventh ghost wave — wide slow -->
+    <path d="M0,120 Q480,60 960,120 Q1200,140 1440,90" fill="none" stroke="rgba(232,229,221,0.07)" stroke-width="2.5">
+      <animate attributeName="d" dur="15s" repeatCount="indefinite" values="M0,120 Q480,60 960,120 Q1200,140 1440,90;M0,80 Q480,140 960,80 Q1200,60 1440,110;M0,120 Q480,60 960,120 Q1200,140 1440,90"/>
+    </path>
+    <!-- Travelling particles — 8 total (silver on amber lines, amber on silver lines) -->
+    <circle r="6" fill="#DDE2E7" opacity="1">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M0,100 Q360,20 720,100 Q1080,180 1440,100"/>
+    </circle>
+    <circle r="5" fill="#FFFFFF" opacity="0.8">
+      <animateMotion dur="5s" repeatCount="indefinite" path="M0,100 Q360,20 720,100 Q1080,180 1440,100" begin="1.5s"/>
     </circle>
     <circle r="4" fill="#C8D0D8" opacity="1">
-      <animateMotion dur="6s" repeatCount="indefinite" path="M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60" begin="2s"/>
+      <animateMotion dur="5.5s" repeatCount="indefinite" path="M0,100 Q360,50 720,100 Q1080,150 1440,100" begin="2s"/>
     </circle>
-    <circle r="4.5" fill="#F5C870" opacity="1">
-      <animateMotion dur="5s" repeatCount="indefinite" path="M0,55 Q300,85 600,50 Q900,25 1200,65 Q1350,80 1440,55"/>
+    <circle r="5.5" fill="#F5C870" opacity="1">
+      <animateMotion dur="4.5s" repeatCount="indefinite" path="M0,100 Q360,150 720,100 Q1080,50 1440,100"/>
     </circle>
-    <circle r="3.5" fill="#F2B54D" opacity="1">
-      <animateMotion dur="7s" repeatCount="indefinite" path="M0,55 Q300,85 600,50 Q900,25 1200,65 Q1350,80 1440,55" begin="3s"/>
+    <circle r="4.5" fill="#F2B54D" opacity="1">
+      <animateMotion dur="6.5s" repeatCount="indefinite" path="M0,100 Q360,150 720,100 Q1080,50 1440,100" begin="2.5s"/>
+    </circle>
+    <circle r="3.5" fill="#FFD074" opacity="0.9">
+      <animateMotion dur="3.5s" repeatCount="indefinite" path="M0,95 Q240,45 480,110 Q720,155 960,85 Q1200,50 1440,100" begin="1s"/>
     </circle>
     <circle r="3" fill="#DDE2E7" opacity="0.9">
-      <animateMotion dur="4.5s" repeatCount="indefinite" path="M0,58 Q180,38 360,62 Q540,82 720,58 Q900,38 1080,62 Q1260,82 1440,58" begin="1s"/>
+      <animateMotion dur="7.5s" repeatCount="indefinite" path="M0,105 Q180,70 360,115 Q540,145 720,95 Q900,60 1080,105 Q1260,140 1440,90" begin="0.5s"/>
+    </circle>
+    <circle r="4" fill="#FFFFFF" opacity="0.6">
+      <animateMotion dur="5s" repeatCount="indefinite" path="M0,100 Q120,75 240,100 Q360,125 480,100 Q600,75 720,100 Q840,125 960,100 Q1080,75 1200,100 Q1320,125 1440,100" begin="3s"/>
     </circle>
   </svg>
 </div>
