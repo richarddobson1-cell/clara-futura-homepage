@@ -572,6 +572,14 @@ body.iframe-mode .nav {
   color: var(--amber);
   font-weight: 500;
 }
+.tm-notice {
+  font-size: 0.6875rem;
+  color: var(--faint);
+  max-width: 600px;
+  margin: 2rem auto 1.5rem;
+  line-height: 1.6;
+  opacity: 0.7;
+}
 .address {
   font-size: 0.875rem;
   color: var(--faint);

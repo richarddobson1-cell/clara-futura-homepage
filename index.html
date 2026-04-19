@@ -15,7 +15,13 @@
 <body>
 <script>
 // Detect iframe embedding — switch to fixed heights
-if (window.self !== window.top) {
+// Cross-origin iframes block window.top access, so use try/catch
+try {
+  if (window.self !== window.top) {
+    document.body.classList.add('iframe-mode');
+  }
+} catch(e) {
+  // Cross-origin = definitely in iframe
   document.body.classList.add('iframe-mode');
 }
 </script>
@@ -223,8 +229,8 @@ if (window.self !== window.top) {
         <p>Construction &amp; mining talent platform connecting projects with pre-qualified professionals across specialist disciplines.</p>
       </a>
       <a href="#" class="eco-card">
-        <h4>The Dobson Consultancy</h4>
-        <p>Executive search, leadership advisory, and organisational design services for complex sectors.</p>
+        <h4>Lykke Minds &amp; People™</h4>
+        <p>Autoethnographic selection and onboarding tool built on Layered Intelligence Theory — designed for senior leadership recruitment and team-building across complex organisations.</p>
       </a>
     </div>
   </div>
@@ -284,6 +290,7 @@ if (window.self !== window.top) {
       </a>
     </div>
 
+    <p class="tm-notice">Astrala™, Astrala Nexus™, Deeply Human + Deeply AI™, and Lykke Minds &amp; People™ are trademarks of Clara Futura SL, which owns and manages all associated intellectual property.</p>
     <p class="address">26 Avinguda Príncep Benlloch, Andorra la Vella</p>
   </div>
 </section>
