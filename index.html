@@ -40,9 +40,9 @@
   <!-- Animated frequency waves behind hero content -->
   <div class="hero-waves">
     <svg viewBox="0 0 1440 400" preserveAspectRatio="none" class="wave-svg">
-      <path class="wave wave-1" d="M0,200 Q180,100 360,200 Q540,300 720,200 Q900,100 1080,200 Q1260,300 1440,200" fill="none" stroke="rgba(242,181,77,0.15)" stroke-width="1.5"/>
-      <path class="wave wave-2" d="M0,200 Q180,120 360,200 Q540,280 720,200 Q900,120 1080,200 Q1260,280 1440,200" fill="none" stroke="rgba(164,174,183,0.1)" stroke-width="1"/>
-      <path class="wave wave-3" d="M0,200 Q180,140 360,200 Q540,260 720,200 Q900,140 1080,200 Q1260,260 1440,200" fill="none" stroke="rgba(232,229,221,0.06)" stroke-width="0.75"/>
+      <path class="wave wave-1" d="M0,200 Q180,100 360,200 Q540,300 720,200 Q900,100 1080,200 Q1260,300 1440,200" fill="none" stroke="rgba(242,181,77,0.25)" stroke-width="1.5"/>
+      <path class="wave wave-2" d="M0,200 Q180,120 360,200 Q540,280 720,200 Q900,120 1080,200 Q1260,280 1440,200" fill="none" stroke="rgba(164,174,183,0.18)" stroke-width="1"/>
+      <path class="wave wave-3" d="M0,200 Q180,140 360,200 Q540,260 720,200 Q900,140 1080,200 Q1260,260 1440,200" fill="none" stroke="rgba(232,229,221,0.1)" stroke-width="0.75"/>
     </svg>
   </div>
 
@@ -79,10 +79,11 @@
         <!-- Animated pulse SVG -->
         <div class="service-icon">
           <svg viewBox="0 0 80 80" fill="none">
-            <circle cx="40" cy="40" r="30" stroke="rgba(242,181,77,0.3)" stroke-width="1"/>
-            <circle cx="40" cy="40" r="20" stroke="rgba(242,181,77,0.2)" stroke-width="0.75"/>
-            <circle cx="40" cy="40" r="6" fill="#F2B54D" class="pulse-dot"/>
-            <circle cx="40" cy="40" r="6" fill="none" stroke="#F2B54D" stroke-width="0.5" class="pulse-ring"/>
+            <circle cx="40" cy="40" r="30" stroke="rgba(242,181,77,0.35)" stroke-width="1"/>
+            <circle cx="40" cy="40" r="20" stroke="rgba(242,181,77,0.25)" stroke-width="0.75"/>
+            <!-- Silver dot on amber rings = contrast -->
+            <circle cx="40" cy="40" r="6" fill="#C8D0D8" class="pulse-dot"/>
+            <circle cx="40" cy="40" r="6" fill="none" stroke="#C8D0D8" stroke-width="0.5" class="pulse-ring"/>
           </svg>
         </div>
         <h3>Consult</h3>
@@ -94,9 +95,10 @@
         <div class="service-icon">
           <svg viewBox="0 0 80 80" fill="none">
             <path d="M20,60 Q30,20 40,40 Q50,60 60,20" stroke="#F2B54D" stroke-width="1.5" stroke-linecap="round" class="draw-path"/>
-            <circle cx="20" cy="60" r="3" fill="#A4AEB7"/>
-            <circle cx="40" cy="40" r="3" fill="#F2B54D"/>
-            <circle cx="60" cy="20" r="3" fill="#A4AEB7"/>
+            <!-- Silver dots on amber line = contrast -->
+            <circle cx="20" cy="60" r="4" fill="#C8D0D8"/>
+            <circle cx="40" cy="40" r="4" fill="#C8D0D8"/>
+            <circle cx="60" cy="20" r="4" fill="#C8D0D8"/>
           </svg>
         </div>
         <h3>Design</h3>
@@ -109,7 +111,8 @@
           <svg viewBox="0 0 80 80" fill="none">
             <rect x="15" y="25" width="50" height="30" rx="4" stroke="#F2B54D" stroke-width="1"/>
             <path d="M25,35 L35,45 L55,30" stroke="#F2B54D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="40" cy="62" r="2" fill="#A4AEB7"/>
+            <!-- Amber dot on silver line = contrast -->
+            <circle cx="40" cy="62" r="3" fill="#F5C870"/>
             <line x1="30" y1="62" x2="50" y2="62" stroke="#A4AEB7" stroke-width="0.75"/>
           </svg>
         </div>
@@ -123,18 +126,21 @@
 <!-- Frequency Wave Divider -->
 <div class="wave-divider">
   <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path d="M0,60 Q360,0 720,60 Q1080,120 1440,60" fill="none" stroke="rgba(242,181,77,0.2)" stroke-width="1">
+    <path d="M0,60 Q360,0 720,60 Q1080,120 1440,60" fill="none" stroke="rgba(242,181,77,0.3)" stroke-width="1">
       <animate attributeName="d" dur="6s" repeatCount="indefinite" values="M0,60 Q360,0 720,60 Q1080,120 1440,60;M0,60 Q360,120 720,60 Q1080,0 1440,60;M0,60 Q360,0 720,60 Q1080,120 1440,60"/>
     </path>
-    <path d="M0,60 Q360,30 720,60 Q1080,90 1440,60" fill="none" stroke="rgba(164,174,183,0.12)" stroke-width="0.75">
+    <path d="M0,60 Q360,30 720,60 Q1080,90 1440,60" fill="none" stroke="rgba(164,174,183,0.2)" stroke-width="0.75">
       <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0,60 Q360,30 720,60 Q1080,90 1440,60;M0,60 Q360,90 720,60 Q1080,30 1440,60;M0,60 Q360,30 720,60 Q1080,90 1440,60"/>
     </path>
-    <!-- Travelling light particles -->
-    <circle r="3" fill="#F2B54D" opacity="0.6">
+    <!-- Travelling light particles — contrast rule: silver dots on amber lines, amber dots on silver lines -->
+    <circle r="4" fill="#C8D0D8" opacity="1">
       <animateMotion dur="4s" repeatCount="indefinite" path="M0,60 Q360,0 720,60 Q1080,120 1440,60"/>
     </circle>
-    <circle r="2" fill="#A4AEB7" opacity="0.4">
+    <circle r="3.5" fill="#F5C870" opacity="1">
       <animateMotion dur="5s" repeatCount="indefinite" path="M0,60 Q360,120 720,60 Q1080,0 1440,60"/>
+    </circle>
+    <circle r="2.5" fill="#D4DBE1" opacity="0.8">
+      <animateMotion dur="6s" repeatCount="indefinite" path="M0,60 Q360,0 720,60 Q1080,120 1440,60" begin="2s"/>
     </circle>
   </svg>
 </div>
@@ -178,11 +184,15 @@
 <!-- Ecosystem Wave Divider -->
 <div class="wave-divider wave-divider-dark">
   <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path d="M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60" fill="none" stroke="rgba(242,181,77,0.15)" stroke-width="1">
+    <path d="M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60" fill="none" stroke="rgba(242,181,77,0.25)" stroke-width="1">
       <animate attributeName="d" dur="7s" repeatCount="indefinite" values="M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60;M0,60 Q240,100 480,60 Q720,20 960,60 Q1200,100 1440,60;M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60"/>
     </path>
-    <circle r="2.5" fill="#F2B54D" opacity="0.5">
+    <!-- Contrast rule: silver dot on amber line -->
+    <circle r="4" fill="#C8D0D8" opacity="1">
       <animateMotion dur="4.5s" repeatCount="indefinite" path="M0,60 Q240,20 480,60 Q720,100 960,60 Q1200,20 1440,60"/>
+    </circle>
+    <circle r="3" fill="#F5C870" opacity="0.9">
+      <animateMotion dur="5.5s" repeatCount="indefinite" path="M0,60 Q240,100 480,60 Q720,20 960,60 Q1200,100 1440,60"/>
     </circle>
   </svg>
 </div>
