@@ -87,6 +87,14 @@ body {
   text-align: center;
   padding: 6rem 2rem 4rem;
 }
+/* Iframe mode: fixed hero height (vh is unreliable inside iframe) */
+body.iframe-mode .hero {
+  min-height: 800px;
+  max-height: 900px;
+}
+body.iframe-mode .nav {
+  display: none;
+}
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -623,6 +631,7 @@ body {
 
 @media (max-width: 480px) {
   .hero { min-height: 90vh; padding: 5rem 1.25rem 3rem; }
+  body.iframe-mode .hero { min-height: 700px; max-height: 800px; }
   .hero h1 { font-size: 2.25rem; }
   .hero-portrait-wrap { width: 220px; height: 220px; }
 }

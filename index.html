@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<script>
+// Detect iframe embedding — switch to fixed heights
+if (window.self !== window.top) {
+  document.body.classList.add('iframe-mode');
+}
+</script>
 
 <!-- Ambient Particle Canvas (behind all content) -->
 <canvas id="particleCanvas"></canvas>
