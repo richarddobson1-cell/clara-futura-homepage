@@ -401,10 +401,10 @@ try {
   </div>
 </footer>
 
-<!-- Spotify Ambient Player — hidden iframe + floating play/pause button -->
-<div id="spotifyContainer" style="position:fixed;bottom:-200px;left:-200px;width:1px;height:1px;overflow:hidden;pointer-events:none;opacity:0;z-index:-1;">
-  <iframe id="spotifyEmbed" src="https://open.spotify.com/embed/track/1Ofm4FIv007CpeGx2gNeWp?utm_source=generator&theme=0" width="1" height="1" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-</div>
+<!-- Ambient Audio Player — royalty-free cinematic piano -->
+<audio id="ambientAudio" preload="auto" loop>
+  <source src="ambient-music.mp3" type="audio/mpeg">
+</audio>
 
 <!-- Floating ambient music button -->
 <button id="ambientMusicBtn" class="ambient-music-btn" aria-label="Play ambient music" title="Play ambient music">
@@ -422,6 +422,6 @@ try {
 <script src="particles.js"></script>
 <script src="portrait-fx.js"></script>
 <script src="animations.js"></script>
-<script src="spotify-player.js"></script>
+<script src="ambient-player.js"></script>
 </body>
 </html>
