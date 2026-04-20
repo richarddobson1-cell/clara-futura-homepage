@@ -401,8 +401,27 @@ try {
   </div>
 </footer>
 
+<!-- Spotify Ambient Player — hidden iframe + floating play/pause button -->
+<div id="spotifyContainer" style="position:fixed;bottom:-200px;left:-200px;width:1px;height:1px;overflow:hidden;pointer-events:none;opacity:0;z-index:-1;">
+  <iframe id="spotifyEmbed" src="https://open.spotify.com/embed/track/1Ofm4FIv007CpeGx2gNeWp?utm_source=generator&theme=0" width="1" height="1" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<!-- Floating ambient music button -->
+<button id="ambientMusicBtn" class="ambient-music-btn" aria-label="Play ambient music" title="Play ambient music">
+  <svg class="ambient-icon ambient-icon-play" viewBox="0 0 24 24" fill="none">
+    <polygon points="6,3 20,12 6,21" fill="#F2B54D"/>
+  </svg>
+  <svg class="ambient-icon ambient-icon-pause" viewBox="0 0 24 24" fill="none" style="display:none;">
+    <rect x="5" y="3" width="4" height="18" rx="1" fill="#F2B54D"/>
+    <rect x="15" y="3" width="4" height="18" rx="1" fill="#F2B54D"/>
+  </svg>
+  <span class="ambient-pulse-ring"></span>
+  <span class="ambient-pulse-ring ambient-pulse-ring-2"></span>
+</button>
+
 <script src="particles.js"></script>
 <script src="portrait-fx.js"></script>
 <script src="animations.js"></script>
+<script src="spotify-player.js"></script>
 </body>
 </html>
