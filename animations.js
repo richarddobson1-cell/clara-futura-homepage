@@ -276,3 +276,92 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!document.querySelector('.cf-header-trigger')) init();
   }
 })();
+
+// === RESTRAINT PASS (Apr 2026) ===================================
+// (a) Mark body.cf-scrolled after first real scroll (music button opacity)
+// (b) Mark body.cf-engaged once user scrolls past hero (tab pulsation)
+// (c) Reveal manifesto opener when Section 2 enters viewport
+// (d) Fallback: ensure cursor-ready within 2.5s even without mousemove
+// ================================================================
+(function () {
+  'use strict';
+
+  var body = document.body;
+
+  // (a) cf-scrolled — fires on first scroll > 40px
+  var scrolled = false;
+  function onAnyScroll() {
+    if (scrolled) return;
+    var y = window.scrollY || window.pageYOffset || 0;
+    if (y > 40) {
+      scrolled = true;
+      body.classList.add('cf-scrolled');
+    }
+  }
+  window.addEventListener('scroll', onAnyScroll, { passive: true });
+
+  // (b) cf-engaged — once user is past the hero (hero bottom out of view)
+  var hero = document.querySelector('.hero');
+  var engaged = false;
+  function markEngaged() {
+    if (engaged) return;
+    engaged = true;
+    body.classList.add('cf-engaged');
+  }
+  if (hero && 'IntersectionObserver' in window) {
+    var heroObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        // When hero bottom leaves viewport (not intersecting and user has scrolled past)
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          markEngaged();
+          heroObs.disconnect();
+        }
+      });
+    }, { threshold: 0, rootMargin: '-30% 0px 0px 0px' });
+    heroObs.observe(hero);
+  } else {
+    // Fallback — after 4s of presence, engage
+    setTimeout(markEngaged, 4000);
+  }
+
+  // (c) Manifesto opener — fade in when visible (or as soon as user engages)
+  var manifesto = document.querySelector('.manifesto-opener');
+  function revealManifesto() {
+    if (manifesto && !manifesto.classList.contains('is-visible')) {
+      manifesto.classList.add('is-visible');
+    }
+  }
+  if (manifesto && 'IntersectionObserver' in window) {
+    var mObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        // Fire as soon as any part of it enters (threshold 0) — rootMargin negative top
+        // so it fires a bit before the element fully scrolls in
+        if (entry.isIntersecting) {
+          revealManifesto();
+          mObs.unobserve(manifesto);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+    mObs.observe(manifesto);
+  } else if (manifesto) {
+    revealManifesto();
+  }
+  // Safety net — reveal once cf-engaged triggers, regardless
+  if (manifesto) {
+    var engagedCheck = setInterval(function () {
+      if (body.classList.contains('cf-engaged')) {
+        revealManifesto();
+        clearInterval(engagedCheck);
+      }
+    }, 150);
+    // Absolute fallback — after 8s always reveal
+    setTimeout(revealManifesto, 8000);
+  }
+
+  // (d) Cursor fallback — if user hasn't moved mouse after 2.5s, fade cursor in anyway
+  setTimeout(function () {
+    if (!body.classList.contains('cf-cursor-ready')) {
+      body.classList.add('cf-cursor-ready');
+    }
+  }, 2500);
+})();
