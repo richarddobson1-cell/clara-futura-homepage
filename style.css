@@ -1447,7 +1447,7 @@ body.cf-cursor-hover .cf-cursor {
 }
 .hero-lane:hover .lane-proof {
   opacity: 0.95;
-  max-height: 60px;
+  max-height: 80px;
   margin-top: 0.35rem;
   transform: translateY(0);
 }
