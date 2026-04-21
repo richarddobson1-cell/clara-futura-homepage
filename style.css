@@ -1180,7 +1180,6 @@ body.iframe-mode .cf-cursor-outer { display: none; }
 .section.is-collapsible.is-closed .cf-toggle-icon {
   animation: cf-tab-pulse 2.6s ease-in-out infinite;
   box-shadow: 0 0 0 0 rgba(242, 181, 77, 0.6);
-  position: relative;
 }
 @keyframes cf-tab-pulse {
   0%, 100% {
