@@ -741,7 +741,7 @@ body.iframe-mode .nav {
 /* === Ambient Music Button === */
 .ambient-music-btn {
   position: fixed;
-  top: 22px;
+  bottom: 24px;
   right: 24px;
   z-index: 10001; /* above nav (100) */
   width: 44px;
@@ -807,7 +807,7 @@ body.iframe-mode .nav {
 
 /* Keep button visible in iframe mode (WordPress embed) — adjust position slightly */
 body.iframe-mode .ambient-music-btn {
-  top: 16px;
+  bottom: 16px;
   right: 16px;
 }
 .iframe-mode-disabled-ambient {
@@ -817,13 +817,13 @@ body.iframe-mode .ambient-music-btn {
 /* Mobile adjustments */
 @media (max-width: 600px) {
   .ambient-music-btn {
-    top: 14px;
+    bottom: 14px;
     right: 14px;
     width: 38px;
     height: 38px;
   }
   body.iframe-mode .ambient-music-btn {
-    top: 10px;
+    bottom: 10px;
     right: 10px;
   }
   .ambient-icon {
