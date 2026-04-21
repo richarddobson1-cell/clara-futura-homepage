@@ -1292,25 +1292,25 @@ body.cf-cursor-hover .cf-cursor {
 }
 
 .hero-portrait-wrap--corner {
-  width: 88px;
-  height: 88px;
+  width: 96px;
+  height: 96px;
   margin: 0 auto 1.75rem;
-  border-radius: 50%;
-  overflow: hidden;
+  border-radius: 10px;
+  overflow: visible;
   opacity: 0;
   animation: hero-lane-fade 0.8s ease-out 0.1s forwards;
 }
 .hero-portrait-wrap--corner .hero-portrait {
-  border-radius: 50%;
-  object-position: center 25%;
+  border-radius: 10px;
+  object-position: center 20%;
 }
 .hero-portrait-wrap--corner .portrait-ring {
   inset: -5px;
-  border-radius: 50%;
+  border-radius: 13px;
 }
 .hero-portrait-wrap--corner .portrait-ring-2 {
   inset: -12px;
-  border-radius: 50%;
+  border-radius: 16px;
 }
 .hero-portrait-wrap--corner .portrait-fx-canvas {
   display: none; /* disable heavy FX on restrained hero */
