@@ -5,13 +5,7 @@
 (function() {
   'use strict';
 
-  // Don't load in iframe mode (WordPress embed)
-  try {
-    if (window.self !== window.top) return;
-  } catch(e) {
-    return;
-  }
-
+  // Works in both standalone and iframe (WordPress embed) modes
   const btn = document.getElementById('ambientMusicBtn');
   const audio = document.getElementById('ambientAudio');
   if (!btn || !audio) return;

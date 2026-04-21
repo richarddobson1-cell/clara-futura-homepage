@@ -741,11 +741,11 @@ body.iframe-mode .nav {
 /* === Ambient Music Button === */
 .ambient-music-btn {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 9999;
-  width: 48px;
-  height: 48px;
+  top: 22px;
+  right: 24px;
+  z-index: 10001; /* above nav (100) */
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1.5px solid rgba(242,181,77,0.5);
   background: rgba(12,33,55,0.85);
@@ -805,22 +805,30 @@ body.iframe-mode .nav {
   }
 }
 
-/* Hide button in iframe mode (WordPress embed) */
-.iframe-mode .ambient-music-btn {
+/* Keep button visible in iframe mode (WordPress embed) — adjust position slightly */
+body.iframe-mode .ambient-music-btn {
+  top: 16px;
+  right: 16px;
+}
+.iframe-mode-disabled-ambient {
   display: none;
 }
 
 /* Mobile adjustments */
 @media (max-width: 600px) {
   .ambient-music-btn {
-    bottom: 16px;
-    right: 16px;
-    width: 42px;
-    height: 42px;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+  }
+  body.iframe-mode .ambient-music-btn {
+    top: 10px;
+    right: 10px;
   }
   .ambient-icon {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -1160,5 +1168,98 @@ body.iframe-mode .cf-cursor-outer { display: none; }
   .cf-head-hint {
     font-size: 0.65rem;
     letter-spacing: 0.2em;
+  }
+}
+
+/* ============================================================
+   === Pulsating-Light Animation on Closed Collapsible Tabs
+   === Draws the eye to the "click to expand" affordance
+   ============================================================ */
+
+/* Base pulse on the toggle icon ring when section is CLOSED */
+.section.is-collapsible.is-closed .cf-toggle-icon {
+  animation: cf-tab-pulse 2.8s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(242, 181, 77, 0.35);
+}
+@keyframes cf-tab-pulse {
+  0%, 100% {
+    border-color: rgba(242, 181, 77, 0.4);
+    background: rgba(242, 181, 77, 0.04);
+    box-shadow: 0 0 0 0 rgba(242, 181, 77, 0);
+  }
+  50% {
+    border-color: rgba(242, 181, 77, 0.9);
+    background: rgba(242, 181, 77, 0.14);
+    box-shadow: 0 0 18px 2px rgba(242, 181, 77, 0.35),
+                0 0 0 6px rgba(242, 181, 77, 0.08);
+  }
+}
+
+/* Soft radiating ring behind the icon */
+.section.is-collapsible.is-closed .cf-toggle-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 181, 77, 0.5);
+  animation: cf-tab-ring 2.8s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes cf-tab-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%, 100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Subtle breathing glow on the hint text "Click to expand" */
+.section.is-collapsible.is-closed .cf-head-hint {
+  animation: cf-hint-breathe 3.2s ease-in-out infinite;
+}
+@keyframes cf-hint-breathe {
+  0%, 100% {
+    color: var(--faint);
+    opacity: 0.7;
+    text-shadow: 0 0 0 rgba(242, 181, 77, 0);
+  }
+  50% {
+    color: rgba(242, 181, 77, 0.9);
+    opacity: 1;
+    text-shadow: 0 0 12px rgba(242, 181, 77, 0.4);
+  }
+}
+
+/* Pause all pulsing on hover — hover state takes over */
+.section.is-collapsible.is-closed > .container > .cf-header-trigger:hover .cf-toggle-icon,
+.section.is-collapsible.is-closed > .container > .cf-header-trigger:hover .cf-head-hint {
+  animation-play-state: paused;
+}
+.section.is-collapsible.is-closed > .container > .cf-header-trigger:hover .cf-toggle-icon::before {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+/* Staggered delay so pulses don't all fire in unison */
+.section.is-collapsible.is-closed:nth-of-type(2n) .cf-toggle-icon,
+.section.is-collapsible.is-closed:nth-of-type(2n) .cf-head-hint,
+.section.is-collapsible.is-closed:nth-of-type(2n) .cf-toggle-icon::before {
+  animation-delay: 0.9s;
+}
+.section.is-collapsible.is-closed:nth-of-type(3n) .cf-toggle-icon,
+.section.is-collapsible.is-closed:nth-of-type(3n) .cf-head-hint,
+.section.is-collapsible.is-closed:nth-of-type(3n) .cf-toggle-icon::before {
+  animation-delay: 1.6s;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .section.is-collapsible.is-closed .cf-toggle-icon,
+  .section.is-collapsible.is-closed .cf-toggle-icon::before,
+  .section.is-collapsible.is-closed .cf-head-hint {
+    animation: none;
   }
 }
