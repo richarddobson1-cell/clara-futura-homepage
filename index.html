@@ -13,6 +13,28 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Elegant Preloader -->
+<div id="cfPreloader" class="cf-preloader" aria-hidden="true">
+  <svg class="cf-pre-svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <!-- Outer amber arc — animates -->
+    <circle cx="100" cy="100" r="80" stroke="rgba(242,181,77,0.12)" stroke-width="1"/>
+    <circle cx="100" cy="100" r="80" stroke="#F2B54D" stroke-width="1.5" stroke-linecap="round"
+            stroke-dasharray="502" stroke-dashoffset="502" class="cf-pre-arc"
+            transform="rotate(-90 100 100)"/>
+    <!-- Inner pulse ring -->
+    <circle cx="100" cy="100" r="54" stroke="rgba(242,181,77,0.3)" stroke-width="0.5" class="cf-pre-pulse"/>
+    <!-- Centered Clara Futura logo text — just initials -->
+    <text x="100" y="108" text-anchor="middle" fill="#F2B54D" font-family="Georgia, serif"
+          font-size="28" font-weight="300" letter-spacing="4" class="cf-pre-logo">CF</text>
+  </svg>
+  <div class="cf-pre-label">CLARA&nbsp;FUTURA&nbsp;WORLD</div>
+</div>
+
+<!-- Custom Cursor -->
+<div id="cfCursor" class="cf-cursor" aria-hidden="true"></div>
+<div id="cfCursorOuter" class="cf-cursor-outer" aria-hidden="true"></div>
+
 <script>
 // Detect iframe embedding — switch to fixed heights
 // Cross-origin iframes block window.top access, so use try/catch
@@ -88,9 +110,12 @@ try {
       <div class="portrait-ring portrait-ring-2"></div>
       <div class="portrait-ring portrait-ring-3"></div>
     </div>
-    <h1>Clara Futura <span class="text-amber">World</span></h1>
-    <p class="hero-tagline">Deeply Human. Deeply AI.</p>
-    <p class="hero-sub">Compassion shaping tomorrow's world</p>
+    <h1 class="hero-poetic">
+      <span class="poetic-line line-1">C O N V E R T &nbsp; T H E &nbsp; F U T U R E</span>
+      <span class="poetic-line line-2">I N T O &nbsp; T H E &nbsp; P A S T</span>
+      <span class="poetic-line line-3">A &nbsp; C O N S C I O U S N E S S &nbsp; R E V O L U T I O N</span>
+    </h1>
+    <p class="hero-tagline">Deeply Human · Deeply AI</p>
     <div class="hero-cta-row">
       <a href="https://youtu.be/nVKEMcOT8lI?si=Zxu597KII6So2E5T" class="cta-gold cta-pulse" target="_blank" rel="noopener">Meet Clara Nexus</a>
     </div>
@@ -423,5 +448,6 @@ try {
 <script src="portrait-fx.js"></script>
 <script src="animations.js"></script>
 <script src="ambient-player.js"></script>
+<script src="preloader-cursor.js"></script>
 </body>
 </html>
