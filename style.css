@@ -998,3 +998,167 @@ body.iframe-mode .cf-cursor-outer { display: none; }
   .cf-pre-svg { width: 140px; height: 140px; }
   .cf-pre-label { font-size: 0.6rem; letter-spacing: 0.5em; text-indent: 0.5em; }
 }
+
+/* ============================================================
+   === Collapsible Section Headers (Click-to-Reveal)
+   ============================================================ */
+
+/* Section with collapsibles: the whole top header area becomes clickable */
+.section.is-collapsible > .container > .cf-header-trigger {
+  position: relative;
+  cursor: pointer;
+  padding-right: 4rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover state — lift + amber glow on h2 */
+.section.is-collapsible > .container > .cf-header-trigger:hover .cf-head-h2 {
+  color: var(--amber);
+  text-shadow: 0 0 22px rgba(242, 181, 77, 0.35);
+}
+.section.is-collapsible > .container > .cf-header-trigger:hover .cf-head-label {
+  color: var(--amber);
+  letter-spacing: 0.4em;
+}
+.section.is-collapsible > .container > .cf-header-trigger:hover .cf-toggle-icon {
+  border-color: var(--amber);
+  background: rgba(242, 181, 77, 0.12);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.cf-head-label, .cf-head-h2 {
+  transition: color 0.4s ease, letter-spacing 0.4s ease, text-shadow 0.4s ease;
+}
+
+/* Label underline reveal on hover */
+.cf-head-label {
+  display: inline-block;
+  position: relative;
+}
+.cf-head-label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--amber);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section.is-collapsible > .container > .cf-header-trigger:hover .cf-head-label::after {
+  width: 100%;
+}
+
+/* Toggle indicator (chevron/plus) — sits to the right */
+.cf-toggle-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(242, 181, 77, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s, background 0.3s;
+  background: rgba(242, 181, 77, 0.04);
+}
+.cf-toggle-icon svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section.is-open .cf-toggle-icon svg {
+  transform: rotate(45deg); /* + becomes ×  */
+}
+.section.is-open .cf-toggle-icon {
+  border-color: var(--amber);
+  background: rgba(242, 181, 77, 0.18);
+}
+
+/* Tiny hint text under the header prompting the user */
+.cf-head-hint {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 400;
+  transition: color 0.35s ease, opacity 0.35s ease;
+  opacity: 0.75;
+}
+.section.is-collapsible > .container > .cf-header-trigger:hover .cf-head-hint {
+  color: var(--amber);
+  opacity: 1;
+}
+.section.is-open .cf-head-hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Collapsible body wrapper — uses grid-rows trick for smooth height animation */
+.cf-section-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s ease,
+              margin-top 0.5s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+.section.is-open .cf-section-body {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 2.5rem;
+}
+.cf-section-body > .cf-section-body-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Staggered child reveal inside opened section */
+.section.is-open .cf-section-body-inner > * {
+  animation: cf-section-child-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.section.is-open .cf-section-body-inner > *:nth-child(1) { animation-delay: 0.25s; }
+.section.is-open .cf-section-body-inner > *:nth-child(2) { animation-delay: 0.35s; }
+.section.is-open .cf-section-body-inner > *:nth-child(3) { animation-delay: 0.45s; }
+.section.is-open .cf-section-body-inner > *:nth-child(4) { animation-delay: 0.55s; }
+@keyframes cf-section-child-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Collapsed state — keep enough top padding so label isn't hidden
+   under the fixed nav (~82px) when a user scrolls or anchor-jumps. */
+.section.is-collapsible.is-closed {
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+  transition: padding 0.6s ease;
+  scroll-margin-top: 100px;
+}
+.section.is-collapsible.is-open {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .section.is-collapsible > .container > .cf-header-trigger {
+    padding-right: 3rem;
+  }
+  .cf-toggle-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .cf-head-hint {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+  }
+}
