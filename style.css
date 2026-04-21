@@ -1854,6 +1854,94 @@ body.cf-cursor-ready .cf-cursor-outer {
 
 @media (max-width: 640px) {
   .hero-question--brand {
-    font-size: clamp(2rem, 1rem + 6vw, 2.75rem);
+    font-size: clamp(1.9rem, 1rem + 5.5vw, 2.6rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    gap: 0.08em;
+  }
+}
+
+/* ============================================================
+   === MOBILE HERO FIT (Apr 2026) — compress to single phone screen
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Shrink hero padding + let iframe height grow naturally */
+  .hero {
+    padding: 3rem 1.25rem 2rem;
+    min-height: auto;
+    justify-content: flex-start;
+  }
+  body.iframe-mode .hero {
+    min-height: 0;
+    max-height: none;
+    padding: 2.25rem 1.25rem 1.75rem;
+  }
+  /* Portrait smaller + tighter margin */
+  .hero-portrait-wrap--corner {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 0.85rem;
+  }
+  /* Eyebrow tighter */
+  .hero-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.35em;
+    margin-bottom: 0.75rem;
+  }
+  /* Subhead tighter */
+  .hero-sub-lede {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin: 0 auto 1.5rem;
+    max-width: 340px;
+  }
+  /* Lanes — reduce padding, shorter proof so cards stay compact */
+  .hero-lane {
+    padding: 1rem 1.1rem 1.75rem;
+  }
+  .lane-label {
+    font-size: 1.1rem;
+  }
+  .lane-desc {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .lane-proof {
+    font-size: 0.7rem;
+    max-height: 50px;
+  }
+  .lane-arrow {
+    bottom: 0.9rem;
+    right: 1.1rem;
+    font-size: 1rem;
+  }
+  .hero-lanes {
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-secondary {
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-question--brand {
+    font-size: 1.85rem;
+    letter-spacing: -0.005em;
+    line-height: 1.02;
+  }
+  .hero-portrait-wrap--corner {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.7rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.58rem;
+    margin-bottom: 0.6rem;
+  }
+  .hero-sub-lede {
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
   }
 }
