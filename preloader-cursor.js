@@ -33,8 +33,9 @@
   }
 
   // ---------- Custom Cursor ----------
+  // Enable in iframe too so the circle+dot appears everywhere (no native arrow fallback).
   var isTouch = window.matchMedia('(pointer: coarse)').matches;
-  if (inIframe || isTouch) return;
+  if (isTouch) return;
 
   var cursor = document.getElementById('cfCursor');
   var cursorOuter = document.getElementById('cfCursorOuter');

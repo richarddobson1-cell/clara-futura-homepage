@@ -942,8 +942,7 @@ body.cf-cursor-hover .cf-cursor {
   height: 6px;
   box-shadow: 0 0 18px rgba(242, 181, 77, 0.9);
 }
-body.iframe-mode .cf-cursor,
-body.iframe-mode .cf-cursor-outer { display: none; }
+/* Custom cursor IS enabled in iframe mode — keep circle+dot everywhere */
 
 /* Don't hide native cursor on touch devices */
 @media (pointer: fine) {
