@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Which sections should be collapsible (in visual order)
   // First section stays open by default so the page doesn't feel empty
   var SECTIONS = [
-    { id: 'what-we-do',  openByDefault: true  },
+    { id: 'what-we-do',  openByDefault: false },
     { id: 'research',    openByDefault: false },
     { id: 'ecosystem',   openByDefault: false },
     { id: 'patent',      openByDefault: false },
