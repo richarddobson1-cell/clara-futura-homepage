@@ -240,14 +240,20 @@ document.addEventListener('DOMContentLoaded', () => {
         bodyInner.querySelectorAll('.service-card, .research-card, .eco-card, .patent-card, .contact-item').forEach(function(el) {
           el.classList.add('cf-visible');
         });
-        // Gentle scroll so the opened section header stays visible
-        setTimeout(function() {
-          var rect = section.getBoundingClientRect();
-          if (rect.top < 110 || rect.top > window.innerHeight * 0.4) {
-            var y = window.scrollY + rect.top - 110;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-          }
-        }, 50);
+        // Gentle scroll so the opened section header stays visible.
+        // BUT: skip the scroll entirely when embedded in a parent frame —
+        // an iframe-level window.scrollTo on mobile Safari propagates to the
+        // parent window and sends it to a wrong position. The parent page
+        // (WordPress) keeps the user where they clicked, which is correct.
+        if (window.self === window.top) {
+          setTimeout(function() {
+            var rect = section.getBoundingClientRect();
+            if (rect.top < 110 || rect.top > window.innerHeight * 0.4) {
+              var y = window.scrollY + rect.top - 110;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }, 50);
+        }
       }
     }
 
