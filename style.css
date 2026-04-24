@@ -1652,7 +1652,8 @@ body:not(.cf-engaged) .section.is-collapsible.is-closed .cf-head-hint {
 /* 4. Cursor: slightly slower fade-in on first appearance */
 body.cf-cursor-ready .cf-cursor,
 body.cf-cursor-ready .cf-cursor-outer {
-  transition: opacity 0.5s var(--ease-out), transform 0.05s linear, border-color 0.25s, background 0.3s;
+  /* transform has NO transition — snaps instantly to cursor (no trailing). */
+  transition: opacity 0.5s var(--ease-out), border-color 0.25s, background 0.3s, width 0.18s, height 0.18s;
 }
 
 /* ============================================================

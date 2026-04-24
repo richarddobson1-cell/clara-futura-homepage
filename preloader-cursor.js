@@ -41,17 +41,21 @@
   var cursorOuter = document.getElementById('cfCursorOuter');
   if (!cursor || !cursorOuter) return;
 
-  var mouseX = -100, mouseY = -100;
-  var outerX = -100, outerY = -100;
   var ready = false;
 
+  // Instant follow — no lag. Ring + dot snap directly to the mouse position.
   document.addEventListener('mousemove', function (e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    var x = e.clientX;
+    var y = e.clientY;
     if (!ready) {
       ready = true;
       document.body.classList.add('cf-cursor-ready');
     }
+    var hovered = document.body.classList.contains('cf-cursor-hover');
+    var ringHalf = hovered ? 26 : 20;
+    var dotHalf = hovered ? 3 : 4;
+    cursorOuter.style.transform = 'translate3d(' + (x - ringHalf) + 'px, ' + (y - ringHalf) + 'px, 0)';
+    cursor.style.transform = 'translate3d(' + (x - dotHalf) + 'px, ' + (y - dotHalf) + 'px, 0)';
   }, { passive: true });
 
   document.addEventListener('mouseleave', function () {
@@ -62,23 +66,6 @@
     cursor.style.opacity = '';
     cursorOuter.style.opacity = '';
   });
-
-  // Smooth follow loop
-  function tick() {
-    // Outer ring — smooth lag
-    outerX += (mouseX - outerX) * 0.18;
-    outerY += (mouseY - outerY) * 0.18;
-    // Outer ring size changes via CSS; JS keeps centering the translation
-    var hovered = document.body.classList.contains('cf-cursor-hover');
-    var ringHalf = hovered ? 26 : 20;
-    cursorOuter.style.transform = 'translate3d(' + (outerX - ringHalf) + 'px, ' + (outerY - ringHalf) + 'px, 0)';
-
-    var dotHalf = hovered ? 3 : 4;
-    cursor.style.transform = 'translate3d(' + (mouseX - dotHalf) + 'px, ' + (mouseY - dotHalf) + 'px, 0)';
-
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
 
   // Hover expansion on interactive elements
   var hoverSelector = 'a, button, [role="button"], input, textarea, select, .cta-gold, .cta-primary, .ambient-btn, .cf-clickable';
