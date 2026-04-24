@@ -3,6 +3,43 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
+// === Iframe auto-resize ===
+// Emits the current content height to the parent window whenever it changes,
+// so the parent can resize the <iframe> element and prevent content from being
+// clipped beneath a fixed iframe height (was causing later expand-cards on
+// the homepage to be unreachable on mobile Safari when several were already
+// open). The parent listens via `message` event for { type:'cf-iframe-height' }.
+let lastPostedHeight = 0;
+function postHeight() {
+  if (window.self === window.top) return; // standalone: nothing to do
+  const h = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight
+  );
+  if (Math.abs(h - lastPostedHeight) < 4) return; // throttle tiny changes
+  lastPostedHeight = h;
+  try { window.parent.postMessage({ type:'cf-iframe-height', height:h, source:'clara-futura-homepage' }, '*'); } catch(e) {}
+}
+if (window.self !== window.top) {
+  window.addEventListener('load', function(){
+    postHeight();
+    // Initial burst to catch late-loading images / fonts.
+    setTimeout(postHeight, 300);
+    setTimeout(postHeight, 1000);
+    setTimeout(postHeight, 2500);
+  });
+  window.addEventListener('resize', function(){ setTimeout(postHeight, 150); });
+  // Observe any DOM size changes (cards opening, images loading).
+  if (typeof ResizeObserver !== 'undefined') {
+    try {
+      const ro = new ResizeObserver(function(){ postHeight(); });
+      ro.observe(document.body);
+    } catch(e) {}
+  }
+}
+
 const firedSections = new Set();
 function markFired(id) { firedSections.add(id); }
 const SAFETY_TIMEOUT_MS = 4000;
@@ -254,6 +291,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }, 50);
         }
+        // When embedded, tell the parent to resize the iframe to fit our
+        // new content height (open sections can add ~900–2100px each).
+        if (window.self !== window.top && typeof postHeight === 'function') {
+          // Fire multiple times during the 0.7s grid-rows transition.
+          postHeight();
+          setTimeout(postHeight, 200);
+          setTimeout(postHeight, 500);
+          setTimeout(postHeight, 900);
+        }
+      }
+      // Closing also changes height — notify parent on close too.
+      if (window.self !== window.top && typeof postHeight === 'function') {
+        setTimeout(postHeight, 200);
+        setTimeout(postHeight, 500);
+        setTimeout(postHeight, 900);
       }
     }
 
