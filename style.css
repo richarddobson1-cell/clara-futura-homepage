@@ -522,6 +522,8 @@ body.iframe-mode .nav {
   padding: 0.2rem 0.75rem;
   letter-spacing: 0.03em;
 }
+.research-card-link { margin: 0.85rem 0 0; }
+.research-card-link .link-arrow { font-size: 0.875rem; }
 .research-links {
   display: flex;
   flex-wrap: wrap;
