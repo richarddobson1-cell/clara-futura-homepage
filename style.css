@@ -1322,7 +1322,7 @@ body.cf-cursor-hover .cf-cursor {
   font-size: 0.7rem;
   letter-spacing: 0.5em;
   text-indent: 0.5em;
-  color: var(--faint);
+  color: #FFFFFF;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   opacity: 0;
