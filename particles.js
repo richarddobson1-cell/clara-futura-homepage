@@ -365,5 +365,12 @@
   window.addEventListener('resize', resize);
 
   init();
-  draw();
+  // Defer the first frame until the browser is idle so we don't compete
+  // with hero render and font/style work on first paint.
+  var startDraw = function () { animId = requestAnimationFrame(draw); };
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(startDraw, { timeout: 600 });
+  } else {
+    setTimeout(startDraw, 250);
+  }
 })();
