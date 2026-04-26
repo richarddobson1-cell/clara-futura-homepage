@@ -33,11 +33,8 @@
   }
 
   // ---------- Custom Cursor ----------
-  // Skip when running inside the WordPress parent — the parent already renders
-  // its own custom cursor (cf-scroll-animations). Running both doubles every
-  // mousemove handler and causes visible cursor lag.
-  if (inIframe) return;
-
+  // Always run — when embedded as an iframe the parent's WP cursor is hidden
+  // over the iframe and this one takes over.
   var isTouch = window.matchMedia('(pointer: coarse)').matches;
   if (isTouch) return;
 
