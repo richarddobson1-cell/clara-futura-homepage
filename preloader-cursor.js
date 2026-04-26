@@ -33,7 +33,11 @@
   }
 
   // ---------- Custom Cursor ----------
-  // Enable in iframe too so the circle+dot appears everywhere (no native arrow fallback).
+  // Skip when running inside the WordPress parent — the parent already renders
+  // its own custom cursor (cf-scroll-animations). Running both doubles every
+  // mousemove handler and causes visible cursor lag.
+  if (inIframe) return;
+
   var isTouch = window.matchMedia('(pointer: coarse)').matches;
   if (isTouch) return;
 
@@ -41,21 +45,16 @@
   var cursorOuter = document.getElementById('cfCursorOuter');
   if (!cursor || !cursorOuter) return;
 
+  var mx = -100, my = -100, ox = -100, oy = -100;
   var ready = false;
+  var hovered = false;
 
-  // Instant follow — no lag. Ring + dot snap directly to the mouse position.
   document.addEventListener('mousemove', function (e) {
-    var x = e.clientX;
-    var y = e.clientY;
+    mx = e.clientX; my = e.clientY;
     if (!ready) {
       ready = true;
       document.body.classList.add('cf-cursor-ready');
     }
-    var hovered = document.body.classList.contains('cf-cursor-hover');
-    var ringHalf = hovered ? 26 : 20;
-    var dotHalf = hovered ? 3 : 4;
-    cursorOuter.style.transform = 'translate3d(' + (x - ringHalf) + 'px, ' + (y - ringHalf) + 'px, 0)';
-    cursor.style.transform = 'translate3d(' + (x - dotHalf) + 'px, ' + (y - dotHalf) + 'px, 0)';
   }, { passive: true });
 
   document.addEventListener('mouseleave', function () {
@@ -67,17 +66,31 @@
     cursorOuter.style.opacity = '';
   });
 
-  // Hover expansion on interactive elements
+  function tick() {
+    // dot follows pointer; ring eases for a soft trail
+    var ringHalf = hovered ? 26 : 20;
+    var dotHalf = hovered ? 3 : 4;
+    ox += (mx - ox) * 0.22;
+    oy += (my - oy) * 0.22;
+    cursorOuter.style.transform = 'translate3d(' + (ox - ringHalf) + 'px,' + (oy - ringHalf) + 'px,0)';
+    cursor.style.transform = 'translate3d(' + (mx - dotHalf) + 'px,' + (my - dotHalf) + 'px,0)';
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  // Hover expansion on interactive elements (cached, no per-frame DOM walk)
   var hoverSelector = 'a, button, [role="button"], input, textarea, select, .cta-gold, .cta-primary, .ambient-btn, .cf-clickable';
 
   document.addEventListener('mouseover', function (e) {
     if (e.target.closest && e.target.closest(hoverSelector)) {
+      hovered = true;
       document.body.classList.add('cf-cursor-hover');
     }
   }, { passive: true });
 
   document.addEventListener('mouseout', function (e) {
     if (e.target.closest && e.target.closest(hoverSelector)) {
+      hovered = false;
       document.body.classList.remove('cf-cursor-hover');
     }
   }, { passive: true });
