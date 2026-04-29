@@ -1302,6 +1302,41 @@ body.cf-cursor-hover .cf-cursor {
   opacity: 0;
   animation: hero-lane-fade 0.8s ease-out 0.1s forwards;
 }
+
+/* Golden spiral mark — replaces the Clara portrait */
+.hero-spiral-wrap {
+  width: 112px;
+  height: 112px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: hero-lane-fade 0.9s ease-out 0.1s forwards;
+  filter: drop-shadow(0 0 18px rgba(242, 181, 77, 0.18));
+}
+.hero-spiral {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-origin: 62% 58%;
+  animation: hero-spiral-drift 28s linear infinite;
+}
+.hero-spiral-glow-path {
+  animation: hero-spiral-pulse 4.2s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes hero-spiral-drift {
+  to { transform: rotate(360deg); }
+}
+@keyframes hero-spiral-pulse {
+  0%, 100% { opacity: 0.18; }
+  50%      { opacity: 0.55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-spiral { animation: none; }
+  .hero-spiral-glow-path { animation: none; opacity: 0.30; }
+}
 .hero-portrait-wrap--corner .hero-portrait {
   border-radius: 10px;
   object-position: center 20%;
@@ -1528,6 +1563,7 @@ body.cf-cursor-hover .cf-cursor {
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .hero-portrait-wrap--corner,
+  .hero-spiral-wrap,
   .hero-eyebrow,
   .hero-question,
   .hero-lane,
@@ -1888,6 +1924,11 @@ body.cf-cursor-ready .cf-cursor-outer {
     height: 72px;
     margin: 0 auto 0.85rem;
   }
+  .hero-spiral-wrap {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 0.85rem;
+  }
   /* Eyebrow tighter */
   .hero-eyebrow {
     font-size: 0.62rem;
@@ -1940,6 +1981,11 @@ body.cf-cursor-ready .cf-cursor-outer {
   .hero-portrait-wrap--corner {
     width: 64px;
     height: 64px;
+    margin-bottom: 0.7rem;
+  }
+  .hero-spiral-wrap {
+    width: 76px;
+    height: 76px;
     margin-bottom: 0.7rem;
   }
   .hero-eyebrow {

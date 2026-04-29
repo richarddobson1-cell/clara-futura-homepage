@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Golden spiral — Clara Futura World">
+  <defs>
+    <radialGradient id="cf-spiral-glow" cx="62%" cy="58%" r="65%">
+      <stop offset="0%" stop-color="#FFD891" stop-opacity="0.35"/>
+      <stop offset="55%" stop-color="#F2B54D" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0C2137" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cf-spiral-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE6B0"/>
+      <stop offset="50%" stop-color="#F2B54D"/>
+      <stop offset="100%" stop-color="#C58A28"/>
+    </linearGradient>
+    <filter id="cf-spiral-blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Soft halo behind the curl -->
+  <circle cx="124" cy="116" r="78" fill="url(#cf-spiral-glow)"/>
+
+  <!-- Logarithmic golden spiral, plotted with phi (1.6180339887) growth.
+       Centre offset slightly down-right so the curl sits in the natural
+       golden-ratio focal point of the square. -->
+  <g transform="translate(124 116)">
+    <!-- Outer faint repeat for depth -->
+    <path
+      d="M -85.5 -52.8
+         A 100 100 0 0 1 52.8 -85.5
+         A 61.8 61.8 0 0 1 85.5 32.6
+         A 38.2 38.2 0 0 1 -20.1 52.8
+         A 23.6 23.6 0 0 1 -32.6 -12.4
+         A 14.6 14.6 0 0 1 7.7 -20.1
+         A 9.0 9.0 0 0 1 12.4 4.7
+         A 5.6 5.6 0 0 1 -2.9 7.7
+         A 3.4 3.4 0 0 1 -4.7 -1.8
+         A 2.1 2.1 0 0 1 1.1 -2.9
+         A 1.3 1.3 0 0 1 1.8 0.7"
+      fill="none"
+      stroke="url(#cf-spiral-stroke)"
+      stroke-width="1.0"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.25"
+      filter="url(#cf-spiral-blur)"/>
+
+    <!-- Main spiral curve -->
+    <path
+      d="M -85.5 -52.8
+         A 100 100 0 0 1 52.8 -85.5
+         A 61.8 61.8 0 0 1 85.5 32.6
+         A 38.2 38.2 0 0 1 -20.1 52.8
+         A 23.6 23.6 0 0 1 -32.6 -12.4
+         A 14.6 14.6 0 0 1 7.7 -20.1
+         A 9.0 9.0 0 0 1 12.4 4.7
+         A 5.6 5.6 0 0 1 -2.9 7.7
+         A 3.4 3.4 0 0 1 -4.7 -1.8
+         A 2.1 2.1 0 0 1 1.1 -2.9
+         A 1.3 1.3 0 0 1 1.8 0.7"
+      fill="none"
+      stroke="url(#cf-spiral-stroke)"
+      stroke-width="2.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"/>
+
+    <!-- Tiny eye at the centre -->
+    <circle cx="0" cy="0" r="1.4" fill="#FFE6B0"/>
+  </g>
+</svg>
