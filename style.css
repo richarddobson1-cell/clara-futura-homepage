@@ -1997,3 +1997,178 @@ body.cf-cursor-ready .cf-cursor-outer {
     margin-bottom: 1.25rem;
   }
 }
+
+/* === Clara Nexus launch banner === */
+.launch-banner {
+  position: relative;
+  background: linear-gradient(180deg, #0C2137 0%, #0E2640 100%);
+  border-top: 1px solid rgba(242, 181, 77, 0.18);
+  border-bottom: 1px solid rgba(242, 181, 77, 0.18);
+  padding: 64px 0 64px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.launch-aurora {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 720px 280px at 18% 50%, rgba(242, 181, 77, 0.10), transparent 70%),
+    radial-gradient(ellipse 520px 240px at 82% 50%, rgba(164, 174, 183, 0.08), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.launch-spark {
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
+  animation: launch-spark-pulse 6s ease-in-out infinite;
+}
+.launch-spark-cross {
+  transform-origin: 40px 40px;
+  animation: launch-spark-rotate 24s linear infinite;
+}
+@keyframes launch-spark-pulse {
+  0%, 100% { opacity: 0.55; transform: translateY(-50%) scale(1); }
+  50%      { opacity: 0.85; transform: translateY(-50%) scale(1.06); }
+}
+@keyframes launch-spark-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.launch-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  text-align: left;
+}
+.launch-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(242, 181, 77, 0.10);
+  border: 1px solid rgba(242, 181, 77, 0.40);
+  border-radius: 999px;
+  color: var(--amber);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+.launch-pill-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--amber);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(242, 181, 77, 0.7);
+  animation: launch-pill-blink 2.4s ease-in-out infinite;
+}
+@keyframes launch-pill-blink {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%      { opacity: 0.55; transform: scale(0.85); }
+}
+.launch-headline {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0 0 18px;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+.launch-headline-main {
+  display: block;
+  font-size: clamp(2rem, 4.6vw, 3rem);
+  font-weight: 500;
+}
+.launch-headline-sub {
+  display: block;
+  font-style: italic;
+  color: var(--amber);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-top: 6px;
+  font-weight: 400;
+}
+.launch-lede {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  max-width: 760px;
+  margin: 0 0 28px;
+}
+.launch-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.launch-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--amber);
+  color: #0C2137;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  padding: 14px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(242, 181, 77, 0.28), 0 0 0 0 rgba(242, 181, 77, 0.45);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), background 0.3s var(--ease-out);
+  position: relative;
+}
+.launch-cta:hover,
+.launch-cta:focus-visible {
+  background: #ffc870;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(242, 181, 77, 0.42), 0 0 0 6px rgba(242, 181, 77, 0.10);
+}
+.launch-cta:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+.launch-cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s var(--ease-out);
+}
+.launch-cta:hover .launch-cta-arrow,
+.launch-cta:focus-visible .launch-cta-arrow {
+  transform: translateX(4px);
+}
+.launch-meta {
+  color: var(--faint);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+@media (max-width: 768px) {
+  .launch-banner {
+    padding: 48px 0 48px;
+  }
+  .launch-spark {
+    width: 140px;
+    height: 140px;
+    right: -30px;
+    top: 24px;
+    opacity: 0.45;
+    transform: none;
+    animation: none;
+  }
+  .launch-pill { font-size: 0.66rem; margin-bottom: 16px; }
+  .launch-lede { font-size: 0.94rem; margin-bottom: 22px; }
+  .launch-cta { padding: 12px 22px; font-size: 0.92rem; }
+  .launch-meta { font-size: 0.76rem; }
+  .launch-actions { gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .launch-spark, .launch-spark-cross, .launch-pill-dot { animation: none; }
+}
